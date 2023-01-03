@@ -1,4 +1,6 @@
 import os
+import string
+import re
 import pathlib
 import sys
 import meta.utils as utl
@@ -57,7 +59,7 @@ def file_meta(proc_id: str, proc_pref: str, dir: dict, file: str) -> dict|None:
         voc.PARENT_ID: f'{dir.get(voc.ID)}',
         voc.URL: f'{file}',
         voc.LABEL: voc.FILE.upper(),
-        voc.FILE_TYPE: pathlib.Path(file).suffix,
+        voc.FILE_TYPE: utl.replaceChars(pathlib.Path(file).suffix),
         voc.SIZE: stats.st_size,
         voc.DOC: ''
     }

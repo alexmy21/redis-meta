@@ -9,19 +9,8 @@ from meta.controller import Controller
 
 async def post_method(request):
     data: dict = await request.json() 
-    path = os.path.dirname(__file__)
-
-    match data.get(voc.LABEL):
-        case 'SOURCE':
-            print('SOURCE')
-            _data: dict = Controller(path, data).source()
-        case 'TRANSFORM':
-            print('TRANSFORM')
-            _data: dict = Controller(path, data).transform()
-        case _:
-            print('default case')
-
-    return JSONResponse(_data)
+    path = os.path.dirname(__file__)    
+    return JSONResponse(Controller(path, data).run())
 
 def startup():
     print('Starlette started')
@@ -31,5 +20,3 @@ routes = [
 ]
 
 app = Starlette(debug=True, routes=routes, on_startup=[startup])
-
-# /home/alexmy/PYTHON/redis-mds/mds_py_app/file_meta.py

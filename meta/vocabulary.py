@@ -39,6 +39,8 @@ class Vocabulary:
     SCHEMA_DIR = 'schema_dir'
     VERSION = 'version'
     LANGUAGE = 'language'
+    LIMIT = 'limit'
+    QUERY = 'query'
 
     # TRANSACTION
     ITEM_ID = 'item_id'

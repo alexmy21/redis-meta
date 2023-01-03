@@ -2,7 +2,8 @@ import os
 import redis
 from redis.commands.search.field import TextField, NumericField, TagField
 from redis.commands.search.indexDefinition import IndexDefinition, IndexType
-from redis.commands.search.query import NumericFilter, Query
+from redis.commands.search.query import Query
+from redis.commands.search.result import Result
 from redis.commands.search.document import Document
 
 from . vocabulary import Vocabulary as voc
@@ -24,12 +25,16 @@ class Commands:
         else:
             print('Inavalid: {}'.format(schema_path))
             return
-
         try:
             rs.ft(idx_name).create_index(utl.ft_schema(p_dict), definition=IndexDefinition(prefix=[utl.prefix(idx_name)]))
         except:
-            print('Index already exists')
+            # print('Index already exists')
+            return
         finally:
+            ''' 
+                Register index even if it already exists. Just in case 
+                if it was created on Redis server manualy
+            '''
             if proc:
                 Commands.registerProcessor(rs, mds_home, n_doc, sch)
             else:
@@ -140,7 +145,7 @@ class Commands:
         
     def txStatus(rs: redis.Redis, proc_id: str, proc_pref: str, item_id: str, status: str) -> dict|None:
         tx_pref = utl.prefix(voc.TRANSACTION)
-        map:dict = rs.hgetall(tx_pref + item_id)        
+        map:dict = rs.hgetall(tx_pref + ':' + item_id)        
         if map == None:
             return None
         else:            
@@ -149,5 +154,9 @@ class Commands:
             map[voc.STATUS] = status
             return rs.hset(tx_pref + item_id, mapping=map)
 
-    def set(rs: redis.Redis, key: str, value: str) -> str|None:
+    def txLock(rs: redis.Redis, query:str, limit: int, uuid: str) -> str|None:
+
+        return voc.OK
+
+    def loadScripts(rs: redis.Redis, key: str, value: str) -> str|None:
         return rs.set(key, value)

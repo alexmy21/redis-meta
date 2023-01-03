@@ -8,7 +8,7 @@
   'schema_dir': {'type': 'string', 'default': 'processors'},
   'schema': {'type': 'string', 'default': 'file_meta'},
 
-  'keys': {'required': True, 'type': 'list', 'default': ['version', 'parent_id', 'dir', 'package']},
+  'keys': {'required': True, 'type': 'list', 'default': ['version', 'parent_id', 'dir']},
 
   'props': {
     'required': True,

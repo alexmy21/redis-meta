@@ -1,5 +1,7 @@
 import csv
 import importlib
+import re
+import string
 from . vocabulary import Vocabulary as voc
 
 import imp
@@ -119,3 +121,7 @@ def csvHeader(file_path: str) -> bool|None:
     except:
         print('Error reading file')
         return None
+
+def replaceChars(text:str) -> str|None:
+    chars = re.escape(string.punctuation)
+    return re.sub(r'['+chars+']', '', text)
