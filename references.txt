@@ -1,0 +1,17 @@
+https://www.mapzen.com/blog/inside-libpostal/
+https://github.com/openvenues/libpostal
+https://github.com/openvenues/jpostal
+https://github.com/WordPress/openverse-catalog
+https://download.geonames.org/export/zip/
+http://download.geonames.org/export/dump/
+
+https://github.com/guillaume-be/rust-bert
+https://github.com/CurrySoftware/rust-stemmers
+https://github.com/cathalgarvey/whatlang-py
+https://github.com/guillaume-be/rust-tokenizers
+https://github.com/bminixhofer/nlprule/blob/main/python/test.py (root: https://github.com/bminixhofer)
+https://github.com/ticki/eudex
+https://github.com/jprante/elasticsearch-analysis-phonetic-eudex
+https://github.com/Yomguithereal/talisman
+https://github.com/ckoshka/pithy
+https://github.com/quickwit-oss/levenshtein-automata

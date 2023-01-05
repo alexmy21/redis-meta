@@ -3,8 +3,6 @@ from starlette.applications import Starlette
 from starlette.responses import JSONResponse
 from starlette.routing import Route
 
-from meta import utils as utl
-from meta.vocabulary import Vocabulary as voc
 from meta.controller import Controller
 
 async def post_method(request):
