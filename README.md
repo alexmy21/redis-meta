@@ -1,8 +1,8 @@
-#redis-meta
+# redis-meta
 
 is embeddable meta data discovery and metadata extraction and collection utilizing Redis, specifically Redisearch, Redis Graph, and very powerful computational capability of core Redis like HyperLogLog, Bloomfilter,Stream, etc.
 
-##Installation
+## Installation
 
 1. Run git command:
 'code'
