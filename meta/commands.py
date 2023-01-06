@@ -84,7 +84,7 @@ class Commands:
         Updates hash record or creates new if it doesn't exist
     '''
     @staticmethod
-    def updateRecord(rs:redis.Redis, pref: str, schema_path: str, map:dict, cache: bool=False ) -> dict|None:
+    def updateRecord(rs:redis.Redis, pref: str, schema_path: str, map:dict, in_idx: bool=False ) -> dict|None:
         '''
             Redisearch allows very simple implementation for a multistep transactional
             processing. 
@@ -94,9 +94,10 @@ class Commands:
             record out of RS index.
             After commit we are renaming the record key (hash key) by removing underscore ('_')
             from the prefix. This brings record to the index. Kind of 'zero' copy solution :) 
-            'cache' argument is a flag that indicates where record should be: in the index or outside 
+            'in_idx' argument is a flag that indicates where record should be: in the index or outside,
+            by default we keep record outside index.
         '''
-        if cache:
+        if in_idx:
             _pref = utl.prefix(pref) 
         else:
             _pref = utl.underScore(utl.prefix(pref)) 
