@@ -1,8 +1,13 @@
 #redis-meta
+
 is embeddable meta data discovery and metadata extraction and collection utilizing Redis, specifically Redisearch, Redis Graph, and very powerful computational capability of core Redis like HyperLogLog, Bloomfilter,Stream, etc.
+
 ##Installation
+
 1. Run git command:
-'git clone https://github.com/alexmy21/redis-meta.git'
+'code'
+git clone https://github.com/alexmy21/redis-meta.git
+
 2. Create local virtual environment:
 'python3 -m venv redis-meta'
 3. Change directory to the redis-meta:
