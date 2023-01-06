@@ -4,7 +4,9 @@ is embeddable meta data discovery and metadata extraction and collection utilizi
 
 ## Installation
 
-1. Run git command:'code'git clone https://github.com/alexmy21/redis-meta.git'code'
+1. Run git command:
+2. 
+3. 'code'git clone https://github.com/alexmy21/redis-meta.git'code'
 
 2. Create local virtual environment:
 'python3 -m venv redis-meta'
