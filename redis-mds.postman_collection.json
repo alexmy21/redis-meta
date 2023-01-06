@@ -1,99 +1,99 @@
 {
-	"info": {
-		"_postman_id": "edbaf2ba-1993-4a96-8b11-08ffa4c05482",
-		"name": "redis-mds",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	"info":{
+		"_postman_id":"edbaf2ba-1993-4a96-8b11-08ffa4c05482",
+		"name":"redis-mds",
+		"schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
-	"item": [
+	"item":[
 		{
-			"name": "file-meta",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"processor\": \"file_meta\",\n    \"params\": {\n        \"directory\": \"/home/alexmy/Downloads/Ontology/hackathon/demo\"\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name":"file-meta",
+			"request":{
+				"method":"POST",
+				"header":[],
+				"body":{
+					"mode":"raw",
+					"raw":"{\"label\":\"SOURCE\",\"name\":\"file_meta.py\",\"version\":\"0.1.0\",\"package\":\"meta-app\",\"language\":\"python\",\"schema_dir\":\"processors\",\"schema\":\"file_meta\",\"props\":{\"version\":\"0.1.0\",\"parent_id\":\"\",\"dir\":\"/home/alexmy/Downloads/Ontology/hackathon/demo/pub\",\"file_type\":\".csv\"}}",
+					"options":{
+						"raw":{
+							"language":"json"
 						}
 					}
 				},
-				"url": {
-					"raw": "127.0.0.1:8000/post",
-					"host": [
+				"url":{
+					"raw":"127.0.0.1:8000/post",
+					"host":[
 						"127",
 						"0",
 						"0",
 						"1"
 					],
-					"port": "8000",
-					"path": [
+					"port":"8000",
+					"path":[
 						"post"
 					]
 				}
 			},
-			"response": []
+			"response":[]
 		},
 		{
-			"name": "file_ingest",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"label\": \"SOURCE\",\n    \"name\": \"file_meta.py\",\n    \"package\": \"mds_py_app\",\n    \"language\": \"python\",\n    \"schema_dir\": \"processors\",\n    \"schema\": \"file_meta\",\n    \"props\": {\n        \"version\": \"0.1.0\",\n        \"parent_id\": \"\",\n        \"dir\": \"/home/alexmy/Downloads/Ontology/hackathon/demo\",\n        \"file_type\": \".csv\"\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name":"file_ingest",
+			"request":{
+				"method":"POST",
+				"header":[],
+				"body":{
+					"mode":"raw",
+					"raw":"{\"label\":\"SOURCE\",\"name\":\"file_meta.py\",\"package\":\"mds_py_app\",\"language\":\"python\",\"schema_dir\":\"processors\",\"schema\":\"file_meta\",\"props\":{\"version\":\"0.1.0\",\"parent_id\":\"\",\"dir\":\"/home/alexmy/Downloads/Ontology/hackathon/demo\",\"file_type\":\".csv\"}}",
+					"options":{
+						"raw":{
+							"language":"json"
 						}
 					}
 				},
-				"url": {
-					"raw": "127.0.0.1:8000/post",
-					"host": [
+				"url":{
+					"raw":"127.0.0.1:8000/post",
+					"host":[
 						"127",
 						"0",
 						"0",
 						"1"
 					],
-					"port": "8000",
-					"path": [
+					"port":"8000",
+					"path":[
 						"post"
 					]
 				}
 			},
-			"response": []
+			"response":[]
 		},
 		{
-			"name": "test",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"label\": \"TEST\",\n    \"name\": \"test.py\",\n    \"version\": \"0.1.0\",\n    \"package\": \"meta-app\",\n    \"language\": \"python\",\n    \"schema_dir\": \"processors\",\n    \"schema\": \"test\",\n    \"props\": {\n        \"version\": \"0.1.0\",\n        \"name\": \"test\"\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name":"test",
+			"request":{
+				"method":"POST",
+				"header":[],
+				"body":{
+					"mode":"raw",
+					"raw":"{\"label\":\"TEST\",\"name\":\"test.py\",\"version\":\"0.1.0\",\"package\":\"meta-app\",\"language\":\"python\",\"schema_dir\":\"processors\",\"schema\":\"test\",\"props\":{\"version\":\"0.1.0\",\"name\":\"test\"}}",
+					"options":{
+						"raw":{
+							"language":"json"
 						}
 					}
 				},
-				"url": {
-					"raw": "127.0.0.1:8000/post",
-					"host": [
+				"url":{
+					"raw":"127.0.0.1:8000/post",
+					"host":[
 						"127",
 						"0",
 						"0",
 						"1"
 					],
-					"port": "8000",
-					"path": [
+					"port":"8000",
+					"path":[
 						"post"
 					]
 				}
 			},
-			"response": []
+			"response":[]
 		}
 	]
 }

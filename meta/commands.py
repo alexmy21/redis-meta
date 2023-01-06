@@ -80,9 +80,27 @@ class Commands:
         # print('IDX_REG record: {}'.format(idx_reg_dict[voc.LABEL]))
         return Commands.updateRecord(rs, voc.PROC_REG, file, proc_reg_dict)
 
+    '''
+        Updates hash record or creates new if it doesn't exist
+    '''
     @staticmethod
-    def updateRecord(rs:redis.Redis, pref: str, schema_path: str, map:dict) -> dict|None:
-        _pref = utl.prefix(pref)        
+    def updateRecord(rs:redis.Redis, pref: str, schema_path: str, map:dict, cache: bool=False ) -> dict|None:
+        '''
+            Redisearch allows very simple implementation for a multistep transactional
+            processing. 
+            RS indecies based on hashes are linked to RS with the prefix that is
+            a part of of index schema. 
+            While we are working within a transaction we are using underscored prefix. This will keep
+            record out of RS index.
+            After commit we are renaming the record key (hash key) by removing underscore ('_')
+            from the prefix. This brings record to the index. Kind of 'zero' copy solution :) 
+            'cache' argument is a flag that indicates where record should be: in the index or outside 
+        '''
+        if cache:
+            _pref = utl.prefix(pref) 
+        else:
+            _pref = utl.underScore(utl.prefix(pref)) 
+
         sch = utl.getSchemaFromFile(schema_path)     
         v = Validator()        
         k_list: dict = []
