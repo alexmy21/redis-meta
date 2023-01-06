@@ -5,6 +5,7 @@ is embeddable meta data discovery and metadata extraction and collection utilizi
 ## Installation
 
 1. Run git command:
+2. 
 'code'
 git clone https://github.com/alexmy21/redis-meta.git
 
