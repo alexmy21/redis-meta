@@ -4,17 +4,28 @@ is embeddable meta data discovery and metadata extraction and collection framewo
 
 ## Installation
 
-Run git command:
+Tested on Linux (ubuntu 22.04). This project is in very begining stage of development, so be patient errors are the norm :)
 
-`git clone https://github.com/alexmy21/redis-meta.git`
+1. Run git command:
+
+`~/PYTHON/$ git clone https://github.com/alexmy21/redis-meta.git`
 
 2. Create local virtual environment:
-'python3 -m venv redis-meta'
+
+`~/PYTHON/$ python3 -m venv redis-meta`
+
 3. Change directory to the redis-meta:
-'cd redis-meta'
+
+`~/PYTHON/$ cd redis-meta`
+
 4. Activate venv:
-'source <path_to_redis-meta>/bin/activate
-5. Install all packages from requirements.txt file
-'pip install -r requirements.txt '
+
+`~/PYTHON/redis-meta$ source <path_to_redis-meta>/bin/activate`
+
+5. Install all packages from requirements.txt file:
+
+`~/PYTHON/redis-meta$ pip install -r requirements.txt `
+
 6. Make .mds_py accessible from local environment:
-'export MDS_PY=<path_to_redis-meta>.mds_py'
+
+`~/PYTHON/redis-meta$ export MDS_PY=<path_to_redis-meta>.mds_py`
