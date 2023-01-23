@@ -1,6 +1,6 @@
 # redis-meta
 
-is embeddable meta data discovery and metadata extraction and collection framework utilizing Redis, specifically Redisearch, Redis Graph, and very powerful computational capability of core Redis like HyperLogLog, Bloomfilter,Stream, etc.
+is embeddable meta data discovery, extraction, collection, and management framework utilizing Redis, specifically Redisearch, Redis Graph, and very powerful computational capability of core Redis like HyperLogLog, Bloomfilter,Stream, etc.
 
 ## Installation
 
