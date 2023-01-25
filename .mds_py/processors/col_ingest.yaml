@@ -1,12 +1,12 @@
 {
   
-  'label': {'type': 'string', 'default': 'FILE_INGEST'},
-  'name': {'type': 'string', 'default': 'file_ingest.py'},
+  'label': {'type': 'string', 'default': 'COL_INGEST'},
+  'name': {'type': 'string', 'default': 'col_ingest.py'},
   'version': {'type': 'string', 'default': 'str'},
   'package': {'type': 'string', 'default': 'meta-app'},
   'language': {'type': 'string', 'default': 'python'},
   'schema_dir': {'type': 'string', 'default': 'processors'},
-  'schema': {'type': 'string', 'default': 'file_ingest'},
+  'schema': {'type': 'string', 'default': 'col_ingest'},
 
   'keys': {'required': True, 'type': 'list', 'default': ['parent_id', 'version', 'query', 'limit']},
 
@@ -18,7 +18,6 @@
       'version': {'type': 'string', 'default': 'str'},
       'parent_id': {'type': 'string', 'default': 'str'},
       'query': {'type': 'string', 'default': 'str'},
-      'duckdb_name': {'type': 'string', 'default': 'str'},
       'limit': {'type': 'integer', 'default': 10},
       'doc': {'type': 'string', 'default': 'str'},
     }

@@ -1,14 +1,21 @@
 import os
+import time
 from starlette.applications import Starlette
 from starlette.responses import JSONResponse
 from starlette.routing import Route
 
 from meta.controller import Controller
 
+
 async def post_method(request):
+    
+    t1 = time.perf_counter()
     data: dict = await request.json() 
-    path = os.path.dirname(__file__)    
-    return JSONResponse(Controller(path, data).run())
+    path = os.path.dirname(__file__) 
+    response = Controller(path, data).run() 
+    print(f'=== Execution time: {time.perf_counter() - t1}')
+
+    return JSONResponse(response)
 
 def startup():
     print('Starlette started')

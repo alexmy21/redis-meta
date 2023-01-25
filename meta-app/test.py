@@ -1,10 +1,18 @@
 import os
+import duckdb
 from pathlib import Path
 import redis
 from meta.client import Client
+from meta.commands import Commands as cmd
 
 def run():
     r = redis.Redis(host='localhost', port=6379, db=0)
+
+    db_name = '/home/alexmy/PYTHON/redis-meta/.mds_py/sqlite_files/redis_meta.duckdb'
+    schema_name = '/home/alexmy/PYTHON/redis-meta/.mds_py/schemas/transaction.yaml'
+
+    # Testing DuckDB support
+    cmd.createDuckTable(db_name, schema_name, False)
 
     # Reading script.lua file into a string
     script_dir = Client().scripts

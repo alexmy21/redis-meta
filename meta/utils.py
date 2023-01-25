@@ -4,18 +4,13 @@ import re
 import string
 from . vocabulary import Vocabulary as voc
 
-import imp
-import os
-
 import os
 import yaml
 import redis
 import hashlib
 
 from redis.commands.search.field import TextField, NumericField, TagField
-from redis.commands.search.query import NumericFilter, Query
-
-from meta.commands import Commands as cmd
+from cerberus import Validator
 
 
 doc_0 = {'props': {}}
@@ -67,7 +62,7 @@ def getRedis(config: dict) -> redis.Redis|None:
     host = config.get(voc.REDIS, {}).get(voc.REDIS_HOST)
     port = config.get(voc.REDIS, {}).get(voc.REDIS_PORT)
 
-    return redis.Redis(host, port)      
+    return redis.Redis(host, port,  charset="utf-8", decode_responses=True)      
 
 def ft_schema(schema: dict) -> tuple|None:
     dictlist = []
@@ -83,6 +78,17 @@ def ft_schema(schema: dict) -> tuple|None:
             temp = TextField(key)
             dictlist.append(temp) 
     return tuple(i for i in dictlist)
+
+def getProps(sch: dict, schema_path: str):        
+    v = Validator()
+    p_dict: dict = {}
+    if v.validate(doc_0, sch):
+        n_doc = v.normalized(doc_0, sch)
+        p_dict = n_doc.get('props').items() 
+        return p_dict, n_doc
+    else:
+        print('Inavalid: {}'.format(schema_path))
+        return None, None
 
 # Generates SHA1 hash code from key fields of props 
 # dictionary
@@ -101,7 +107,6 @@ def sha1(keys: list, props: dict) -> str|None:
 '''
     Mics methods
 '''
-
 def prefix(term: str) -> str:
     if term.endswith(':'):
         return term
@@ -125,3 +130,6 @@ def csvHeader(file_path: str) -> bool|None:
 def replaceChars(text:str) -> str|None:
     chars = re.escape(string.punctuation)
     return re.sub(r'['+chars+']', '', text)
+
+def quotes(text: str) -> str:
+    return "\'" + text + "\'"

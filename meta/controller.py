@@ -1,24 +1,12 @@
 import os
 import redis
-import importlib
 
 from meta import utils as utl
 from meta.vocabulary import Vocabulary as voc
 from meta.client import Client 
 from meta.commands import Commands as cmd
 
-from redis.commands.search.query import Query
-from redis.commands.search.result import Result
-
-import polars as pl
-# to enrich the examples in this quickstart with dates
-from datetime import datetime, timedelta 
-# to generate data for the examples
-import numpy as np 
-
-
-class Controller:
-    
+class Controller:    
     def __init__(self, path:str, data:dict):
         self.path = path
         self.data = data
@@ -39,7 +27,7 @@ class Controller:
         '''
         path = os.path.join(Client().processors, data.get(voc.SCHEMA)) + '.yaml'
         # print('Controller: ' + path)
-        cmd.updateRecord(self.rs, data.get(voc.SCHEMA), path, data.get(voc.PROPS))
+        cmd.updateRecord(self.rs, data.get(voc.SCHEMA), path, data.get(voc.PROPS), True)
 
     def run(self) -> dict|str|None:
         _data = {}
@@ -52,6 +40,7 @@ class Controller:
             case 'TRANSFORM':
                 print('TRANSFORM')
                 _data: dict = Controller(self.path, self.data).process(voc.WAITING)
+                print(_data)
             case 'COMPLETE':
                 print('COMPLETE')
                 _data: dict = Controller(self.path, self.data).process(voc.COMPLETE)
@@ -71,16 +60,19 @@ class Controller:
         rs = utl.getRedis(Client().config_props) 
         _data:dict = self.data.get(voc.PROPS)
         resources = cmd.selectBatch(rs, voc.TRANSACTION, _data.get(voc.QUERY), _data.get(voc.LIMIT))
-        dataframe =pl.DataFrame(resources.docs)
-        print(dataframe) 
-        ret = {}
-        for doc in resources.docs:
-            ret.update(self.processor.run(doc))
-            _id = str(doc.id ).split(':')[1]
-            cmd.txStatus(rs, self.schema, self.schema, _id, status)
+        ret = {}                    
+        try:            
+            for doc in resources.docs:
+                # print('in for loop')
+                processed = self.processor.run(doc, _data.get('duckdb_name'))                
+                ret.update(processed)
+                cmd.txStatus(rs, self.schema, self.schema, doc.id, status) 
+        except:
+            ret = {'error', 'There is no data to process.'}
+
         return ret
+        
     
     def test(self) -> dict|None:
         _data:dict = self.processor.run()
         return _data
-
