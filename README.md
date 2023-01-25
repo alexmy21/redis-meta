@@ -61,7 +61,8 @@ On this diagram we have four types of metadata entities:
 3. Dictionary’s (catalog's) Entities;
 4. Metadata Graph that represents different types of data-sets (instances of the metadata Entities).
 
-Metadata management in this proposal is a schema driven. It means that all metadata entities are defined by schema. Schema is yaml file created outside of the meta-aap and located in the 
+Metadata management in this proposal is a schema driven. It means that all metadata entities are defined by schema. Schema is yaml file created outside of the meta-aap and located in the .mds_py directory. This directory holds information about all meta-metadata of the meta-app application.
+
 
 ### Dictionaries, Bit sets, HLLs
 
