@@ -43,10 +43,11 @@ To run meta-app you should execute the following command from the terminal (assu
 
 I am using postman to communicate with meta-app. You can find postman collection in the file
 
-redis-meta.postman_collection.json
+`redis-meta.postman_collection.json`
 
 that is in root of the project.
 
+![Screenshot from 2023-01-25 13-27-09](https://user-images.githubusercontent.com/1112548/214653070-49debd90-a486-4fab-8063-e37c53f4306f.png)
 
 
 
