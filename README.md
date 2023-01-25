@@ -29,3 +29,13 @@ Tested on Linux (ubuntu 22.04). This project is in very begining stage of develo
 6. Make .mds_py accessible from local environment:
 
 `~/PYTHON/redis-meta$ export MDS_PY=<path_to_redis-meta>.mds_py`
+
+## Running project
+
+There are two projects in this repository:
+
+1. meta is a core embeddable python libraray;
+2. meta-app that created to demo how redis-meta can be used in user's applications.
+
+
+
