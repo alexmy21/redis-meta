@@ -32,10 +32,22 @@ Tested on Linux (ubuntu 22.04). This project is in very begining stage of develo
 
 ## Running project
 
-There are two projects in this repository:
+There are two sub-projects in this repository:
 
-1. meta is a core embeddable python libraray;
-2. meta-app that created to demo how redis-meta can be used in user's applications.
+1. meta - is a core embeddable python libraray;
+2. meta-app - it is created to demo how redis-meta can be used in user's applications.
+
+To run meta-app you should execute the following command from the terminal (assuming that you are in the project root and you activated venv):
+
+`(redis-meta) alex:~/PYTHON/redis-meta$ uvicorn server:app --reload`
+
+I am using postman to communicate with meta-app. You can find postman collection in the file
+
+redis-meta.postman_collection.json
+
+that is in root of the project.
+
+
 
 
 
