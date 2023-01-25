@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "edbaf2ba-1993-4a96-8b11-08ffa4c05482",
+		"name": "redis-mds",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "file-meta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"label\": \"SOURCE\",\n    \"name\": \"file_meta.py\",\n    \"version\": \"0.1.0\",\n    \"package\": \"meta-app\",\n    \"language\": \"python\",\n    \"schema_dir\": \"processors\",\n    \"schema\": \"file_meta\",\n    \"props\": {\n        \"version\": \"0.1.0\",\n        \"parent_id\": \"\",\n        \"dir\": \"/home/alexmy/Downloads/Ontology/hackathon/demo\",\n        \"file_type\": \"csv\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/post",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "file_ingest",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"label\": \"TRANSFORM\",\n    \"name\": \"file_ingest.py\",\n    \"version\": \"0.1.0\",\n    \"package\": \"meta-app\",\n    \"language\": \"python\",\n    \"schema_dir\": \"processors\",\n    \"schema\": \"file_ingest\",\n    \"props\": {\n        \"version\": \"0.1.0\",\n        \"parent_id\": \"file_meta\",\n        \"query\": \"@processor_id: 'file_meta' @status: 'waiting' @item_prefix: 'file' @item_type: 'csv'\",\n        \"duckdb_name\": \"mds.duckdb\",\n        \"limit\": 20\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/post",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"label\": \"TEST\",\n    \"name\": \"test.py\",\n    \"version\": \"0.1.0\",\n    \"package\": \"meta-app\",\n    \"language\": \"python\",\n    \"schema_dir\": \"processors\",\n    \"schema\": \"test\",\n    \"props\": {\n        \"version\": \"0.1.0\",\n        \"parent_id\": \"no_parents\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/post",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "col_ingest",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"label\": \"TRANSFORM\",\n    \"name\": \"col_ingest.py\",\n    \"version\": \"0.1.0\",\n    \"package\": \"meta-app\",\n    \"language\": \"python\",\n    \"schema_dir\": \"processors\",\n    \"schema\": \"col_ingest\",\n    \"props\": {\n        \"version\": \"0.1.0\",\n        \"parent_id\": \"file_meta\",\n        \"query\": \"@processor_id: 'file_ingest' @status: 'waiting' @item_prefix: 'col' @item_type: 'csv'\",\n        \"limit\": 50\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
