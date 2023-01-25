@@ -65,10 +65,18 @@ Metadata management in this proposal is a schema driven. It means that all metad
 
 Schema is yaml file created outside of the meta-aap and located in the .mds_py directory. This directory holds information about all meta-metadata of the meta-app application.
 
-Here is a list of main schema categories:
+Here is a list of main schema's categories:
 - bootstrap - this is a collection of schemas that defines internal redis-meta metadata. This collection includes:
--- commit_tail schema. 
-
+  - commit_tail schema. This is the schema of Redisearch index that holds commit history;
+  - commit (or commit head) schema. This is the Redisearch index that holds current state of the all metadata indices;
+  - idx_reg schema. It is a schema of the Redisearch index that holds metadata about all schemas;
+  - prog_reg schema. It is a schema of the Redisearch index that holds metadata about all processors used in meta-app;
+  - transaction schema. It is a schema of Redisearch index that is used to support processor orchestration;
+- config - is a collection of configuration files;
+- processors - this is collection of the schemas that describe processors used in meta-app;
+- schemas - is a collection of user defined schemas for user specific data resources;
+- scripts - collection of Lua scripts;
+- sqlite_files - collection of SQLite files.
 
 ### Dictionaries, Bit sets, HLLs
 
