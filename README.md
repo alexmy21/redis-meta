@@ -54,6 +54,30 @@ that is in root of the project.
 
 ![image](https://user-images.githubusercontent.com/1112548/214657224-c294c0e4-bd77-4200-abc5-b7cf133fa716.png)
 
+On this diagram we have four types of metadata entities:
+
+1. Business Ontology Entities;
+2. Platform Ontology Entities;
+3. Dictionary’s (catalog's) Entities;
+4. Metadata Graph that represents different types of data-sets (instances of the metadata Entities).
+
+### Dictionaries, Bit sets, HLLs
+
+These objects are persisted outside of the Metadata Graph. Depending on the MDS implementation it could be:
+- File System;
+- Cloud storage, like AWS S3, minIO, and etc.;
+- Distributed storage's like Hadoop;
+- Relational or NoSql databases and so on.
+
+### Redis Computational Engine
+
+All metadata processing operations are using Redis data structures and Redis modules that provide support for:
+- managing indices for entities and relations with Redisearch module;
+- managing graph presentation of the Metadata using Redis Graph;
+- performing Bit Set calculations using Redis roaring bit-set implementation;
+- performing HLL calculations using built-in Redis HLL support.
+
+
 
 
 
