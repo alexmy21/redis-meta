@@ -63,7 +63,7 @@ On this diagram we have four types of metadata entities:
 
 Metadata management in this proposal is a schema driven. It means that all metadata entities are defined by schema. Schema is a metadata of the metadata entities, kind of meta-metadata.
 
-Schema is yaml file created outside of the meta-aap and located in the .mds_py directory. This directory holds information about all meta-metadata of the meta-app application.
+Schema is yaml file created outside of the meta-app and located in the .mds_py directory. This directory holds information about all meta-metadata of the meta-app application.
 
 Here is a list of main schema's categories:
 - bootstrap - this is a collection of schemas that defines internal redis-meta metadata. This collection includes:
@@ -80,7 +80,7 @@ Here is a list of main schema's categories:
 
 ### Dictionaries, Bit sets, HLLs
 
-These objects are persisted outside of the Metadata Graph. Depending on the MDS implementation it could be:
+These objects are persisted outside of the Metadata Graph. Depending on the meta-app implementation it could be:
 - File System;
 - Cloud storage, like AWS S3, minIO, and etc.;
 - Distributed storage's like Hadoop;
