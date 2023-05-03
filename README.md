@@ -20,7 +20,7 @@ Tested on Linux (ubuntu 22.04). This project is in very begining stage of develo
 
 4. Activate venv:
 
-`~/PYTHON/redis-meta$ source <path_to_redis-meta>/bin/activate`
+`~/PYTHON/redis-meta$ source ./bin/activate`
 
 5. Install all packages from requirements.txt file:
 
